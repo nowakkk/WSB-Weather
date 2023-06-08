@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Good Morning!</h1>
+                <form action="/" method="POST">
+                    <label for="user_input">Enter city:</label>
+                    <input type="text" name="user_input" id="user_input" placeholder="What city you would like to check?" size="80" required>
+                    <button type="submit">Submit</button>
+                </form>
+                <div class="sub-container">
+                    <div class="ikonka">
+                    </div>
+                    <div class="miasto">
+                        {{ data.city }}
+                    </div>
+                    <div class="temperatura">
+                        {{ data.temp }}
+                    </div>
+                    <div class="wilgotnosc">
+                        {{ data.humidity }}
+                    </div>
+                    <div class="wiatr">
+                        {{ data.wind_speed }}
+                    </div>
+                    <div class="mapka">
+                    </div>
+                    <div class="wykres">
+                        {{ chart|safe }}
+                    </div>
+                    <div class="wiadomosci" style="color: black;">
+                        <ul>
+                          {% for item in city_info %}
+                            <li>{{ item }}</li>
+                          {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
